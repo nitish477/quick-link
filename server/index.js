@@ -14,6 +14,7 @@ const MongoDB = async ()=>{
         console.log('connected to database')
     }
 }
+
 const ramdonSlug=Math.random().toString(36).substring(2,7)
 
  app.post('/link', async(req,res)=>{
@@ -53,6 +54,15 @@ const ramdonSlug=Math.random().toString(36).substring(2,7)
     res.redirect(link.url)
  })
 
+
+ app.get('/api/links', async (req,res)=>{
+    const links=await Link.find({});
+    res.json({
+        success: true,
+        data:links,
+        message: "All links fetched successfully!"
+        });
+ })
 
 app.listen(PORT,()=>{
     console.log(`Server started on port ${PORT}`)
