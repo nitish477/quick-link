@@ -11,6 +11,7 @@ app.use(express.json())
 const __dirname= path.resolve()
 
 
+
 const MongoDB = async ()=>{
     const connect= await mongoose.connect(process.env.MONGODB_URL)
     if(connect){
